@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_project_practise/utils/routes/routes.dart';
+import 'package:flutter_mvvm_project_practise/utils/routes/routes_name.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: RoutesName.login,
+      onGenerateRoute: Routes.generateRoute,
     );
   }
 }
@@ -23,14 +26,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
