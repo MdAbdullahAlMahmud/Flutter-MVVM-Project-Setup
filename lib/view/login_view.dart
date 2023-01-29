@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_project_practise/view_model/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 import '../res/componenets/round_button.dart';
 import '../utils/utils.dart';
@@ -37,6 +39,7 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthViewModel>(context);
 
     final height  = MediaQuery.of(context).size.height * 1 ;
     return Scaffold(
@@ -91,6 +94,7 @@ class _LoginViewState extends State<LoginView> {
             SizedBox(height: height * .085,),
             RoundButton(
               title: 'Login',
+              loading: authProvider.loading,
               onPress: (){
                 if(_emailController.text.isEmpty){
 
@@ -103,6 +107,12 @@ class _LoginViewState extends State<LoginView> {
 
                 }else {
 
+                  Map data = {
+                    'email': _emailController.text.toString(),
+                    'password': _passwordController.text.toString()
+                  };
+
+                authProvider.loginApi(data,context);
 
 
                 }
