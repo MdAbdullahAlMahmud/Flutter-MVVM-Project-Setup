@@ -41,6 +41,7 @@ dependencies:
   another_flushbar: ^1.12.29
   provider: ^6.0.5
   shared_preferences: ^2.0.17
+  flutter_admin_scaffold: ^1.1.2
 
 dev_dependencies:
   flutter_test:

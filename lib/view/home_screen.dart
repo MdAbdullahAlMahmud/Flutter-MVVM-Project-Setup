@@ -13,7 +13,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Text('Home Screen'),
+        child: Row(
+          children: [
+
+          ],
+        ),
       ),
     );
   }

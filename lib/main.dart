@@ -15,7 +15,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    MyShredPref.init();
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => AuthViewModel())
     ],
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: RoutesName.login,
+        initialRoute: RoutesName.dashboard,
         onGenerateRoute: Routes.generateRoute,
       ),
 
