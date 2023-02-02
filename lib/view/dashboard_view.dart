@@ -2,6 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:flutter_mvvm_project_practise/utils/routes/routes.dart';
+import 'package:flutter_mvvm_project_practise/utils/routes/routes_name.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class DashboardScreen extends StatelessWidget {
     return AdminScaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Sample'),
+        title: const Text('Admin Panel'),
       ),
       sideBar: SideBar(
         items: const [
@@ -21,65 +23,80 @@ class DashboardScreen extends StatelessWidget {
             icon: Icons.dashboard,
           ),
           AdminMenuItem(
-            title: 'Top Level',
-            icon: Icons.file_copy,
+            title: 'Warehouse',
+            route:RoutesName.warehouse,
+            icon: Icons.store,
+          ),
+          AdminMenuItem(
+            title: 'Sale',
+            route: '/',
+            icon: Icons.dashboard,
             children: [
               AdminMenuItem(
-                title: 'Second Level Item 1',
-                route: '/secondLevelItem1',
+                title: 'New Sale',
+                route: '/',
+                icon: Icons.dashboard,
               ),
               AdminMenuItem(
-                title: 'Second Level Item 2',
-                route: '/secondLevelItem2',
+                title: 'All Sales',
+                route: '/',
+                icon: Icons.dashboard,
               ),
-              AdminMenuItem(
-                title: 'Third Level',
-                children: [
-                  AdminMenuItem(
-                    title: 'Third Level Item 1',
-                    route: '/thirdLevelItem1',
-                  ),
-                  AdminMenuItem(
-                    title: 'Third Level Item 2',
-                    route: '/thirdLevelItem2',
-                  ),
-                ],
-              ),
-            ],
+
+            ]
           ),
+          AdminMenuItem(
+            title: 'Purchase',
+            route: '/',
+            icon: Icons.dashboard,
+              children: [
+                AdminMenuItem(
+                  title: 'New Purchase',
+                  route: '/',
+                  icon: Icons.dashboard,
+                ),
+                AdminMenuItem(
+                  title: 'All Purchase',
+                  route: '/',
+                  icon: Icons.dashboard,
+                ),
+
+              ]
+          ),
+          AdminMenuItem(
+            title: 'Cylinder Receive and Return',
+            route: '/',
+            icon: Icons.dashboard,
+              children: [
+                AdminMenuItem(
+                  title: 'New Receive',
+                  route: '/',
+                  icon: Icons.dashboard,
+                ),
+                AdminMenuItem(
+                  title: 'New Return',
+                  route: '/',
+                  icon: Icons.dashboard,
+                ),
+
+                AdminMenuItem(
+                  title: 'All Receive and Return',
+                  route: '/',
+                  icon: Icons.dashboard,
+                ),
+
+              ]
+          ),
+
+
         ],
         selectedRoute: '/',
         onSelected: (item) {
           if (item.route != null) {
-            Navigator.of(context).pushNamed(item.route!);
+            Routes.adminViewRoute(item.route.toString());
           }
         },
-        header: Container(
-          height: 50,
-          width: double.infinity,
-          color: const Color(0xff444444),
-          child: const Center(
-            child: Text(
-              'header',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-        footer: Container(
-          height: 50,
-          width: double.infinity,
-          color: const Color(0xff444444),
-          child: const Center(
-            child: Text(
-              'footer',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
+
       ),
       body: SingleChildScrollView(
         child: Container(
