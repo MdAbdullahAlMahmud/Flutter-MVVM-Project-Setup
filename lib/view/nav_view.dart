@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'package:flutter_mvvm_project_practise/view/waehouse_screen_view.dart';
+import 'package:flutter_mvvm_project_practise/view_model/NavViewModel.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/routes/routes_name.dart';
 import 'dashboard_view.dart';
@@ -127,21 +129,26 @@ class _NavViewState extends State<NavView> {
   selectedScreenItem(item){
     switch(item.route){
       case RoutesName.dashboard:
+
+        //TODO remove setState((){})
+        Provider.of<NavViewModel>(context).setNavScreenWidget(DashboardScreen());
+
+
         setState(() {
-          _selectedWidgetScreen = DashboardScreen();
+          _selectedWidgetScreen = const DashboardScreen();
         });
         break;
 
 
       case RoutesName.warehouse:
         setState(() {
-          _selectedWidgetScreen = WarehouseView();
+          _selectedWidgetScreen = const WarehouseView();
         });
         break;
 
       case RoutesName.login:
         setState(() {
-          _selectedWidgetScreen = LoginView();
+          _selectedWidgetScreen = const LoginView();
         });
         break;
 

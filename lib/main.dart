@@ -4,6 +4,7 @@ import 'package:flutter_mvvm_project_practise/utils/routes/routes.dart';
 import 'package:flutter_mvvm_project_practise/utils/routes/routes_name.dart';
 import 'package:flutter_mvvm_project_practise/view/dashboard_view.dart';
 import 'package:flutter_mvvm_project_practise/view/nav_view.dart';
+import 'package:flutter_mvvm_project_practise/view_model/NavViewModel.dart';
 import 'package:flutter_mvvm_project_practise/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -14,11 +15,12 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_) => AuthViewModel())
+      ChangeNotifierProvider(create: (_) => AuthViewModel()),
+      ChangeNotifierProvider(create: (_) => NavViewModel())
     ],
       child:  MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -27,7 +29,6 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
        home:const NavView(),
-       // onGenerateRoute: Routes.generateRoute,
       ),
 
     );
