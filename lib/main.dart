@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_project_practise/data/local/shred_pref.dart';
 import 'package:flutter_mvvm_project_practise/utils/routes/routes.dart';
 import 'package:flutter_mvvm_project_practise/utils/routes/routes_name.dart';
+import 'package:flutter_mvvm_project_practise/view/dashboard_view.dart';
+import 'package:flutter_mvvm_project_practise/view/nav_view.dart';
 import 'package:flutter_mvvm_project_practise/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -19,12 +21,13 @@ class MyApp extends StatelessWidget {
       ChangeNotifierProvider(create: (_) => AuthViewModel())
     ],
       child:  MaterialApp(
-        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        title: 'Admin View',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        initialRoute: RoutesName.dashboard,
-        onGenerateRoute: Routes.generateRoute,
+       home:const NavView(),
+       // onGenerateRoute: Routes.generateRoute,
       ),
 
     );

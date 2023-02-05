@@ -15,42 +15,13 @@ class Routes{
     switch(settings.name){
 
       case RoutesName.home:
-        return MaterialPageRoute(builder: (BuildContext context) => HomeScreen());
-
-        case RoutesName.login:
-        return MaterialPageRoute(builder: (BuildContext context) => LoginView());
-
-        case RoutesName.dashboard:
-        return MaterialPageRoute(builder: (BuildContext context) => DashboardScreen());
-
-
-      default :
-        return MaterialPageRoute(builder: (_){
-
-          return const Scaffold(
-            body:  Center(
-              child: Text('No route defined'),
-            ),
-          );
-        });
-
-    }
-
-  }
-  static Route<dynamic> adminViewRoute (String route){
-
-    switch(route){
-
-      case RoutesName.home:
         return MaterialPageRoute(builder: (BuildContext context) => const HomeScreen());
 
-      case RoutesName.login:
+        case RoutesName.login:
         return MaterialPageRoute(builder: (BuildContext context) => const LoginView());
 
-      case RoutesName.dashboard:
+        case RoutesName.dashboard:
         return MaterialPageRoute(builder: (BuildContext context) => const DashboardScreen());
-      case RoutesName.warehouse:
-        return MaterialPageRoute(builder: (BuildContext context) => const WarehouseView());
 
 
       default :

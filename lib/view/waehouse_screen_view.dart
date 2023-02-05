@@ -11,6 +11,19 @@ class WarehouseView extends StatefulWidget {
 class _WarehouseViewState extends State<WarehouseView> {
   @override
   Widget build(BuildContext context) {
-    return Text('Abdullah');
-  }
+      return SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.topLeft,
+          padding: const EdgeInsets.all(10),
+          child: const Text(
+            'Warehouse',
+            style: TextStyle(
+              fontWeight: FontWeight.w700,
+              fontSize: 36,
+            ),
+          ),
+        ),
+      );
+    }
 }
+
