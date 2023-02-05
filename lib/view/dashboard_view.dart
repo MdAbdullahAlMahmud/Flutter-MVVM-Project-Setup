@@ -2,98 +2,129 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_admin_scaffold/admin_scaffold.dart';
+import 'package:flutter_mvvm_project_practise/utils/routes/routes.dart';
+import 'package:flutter_mvvm_project_practise/utils/routes/routes_name.dart';
+import 'package:flutter_mvvm_project_practise/view/login_view.dart';
 
-class DashboardScreen extends StatelessWidget {
+import 'home_screen.dart';
+
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  String selectedRoutedName = RoutesName.dashboard;
+  Widget selectedRoutedScreen = DashboardScreen();
 
   @override
   Widget build(BuildContext context) {
     return AdminScaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Sample'),
+        title: const Text('Admin LTE'),
       ),
       sideBar: SideBar(
         items: const [
           AdminMenuItem(
             title: 'Dashboard',
-            route: '/',
+            route: RoutesName.dashboard,
             icon: Icons.dashboard,
           ),
+
           AdminMenuItem(
-            title: 'Top Level',
-            icon: Icons.file_copy,
-            children: [
-              AdminMenuItem(
-                title: 'Second Level Item 1',
-                route: '/secondLevelItem1',
-              ),
-              AdminMenuItem(
-                title: 'Second Level Item 2',
-                route: '/secondLevelItem2',
-              ),
-              AdminMenuItem(
-                title: 'Third Level',
-                children: [
-                  AdminMenuItem(
-                    title: 'Third Level Item 1',
-                    route: '/thirdLevelItem1',
-                  ),
-                  AdminMenuItem(
-                    title: 'Third Level Item 2',
-                    route: '/thirdLevelItem2',
-                  ),
-                ],
-              ),
-            ],
+            title: 'Login',
+            route: RoutesName.login,
+            icon: Icons.dashboard,
           ),
+
+          AdminMenuItem(
+            title: 'Homescreen',
+            route: RoutesName.home,
+            icon: Icons.dashboard,
+          ),
+
+
+
+          AdminMenuItem(
+              title: 'Sales ',
+              icon: Icons.file_copy,
+              route: '/'
+          ),
+          AdminMenuItem(
+              title: 'Purchase ',
+              icon: Icons.file_copy,
+              route: '/'
+          ),
+          AdminMenuItem(
+              title: 'Receive Return',
+              icon: Icons.file_copy,
+              route: '/'
+          ),
+
+          AdminMenuItem(
+              title: 'PaymentContraExpense',
+              icon: Icons.file_copy,
+              route: '/'
+          ),
+
+
+
+
         ],
-        selectedRoute: '/',
+        selectedRoute: RoutesName.dashboard,
         onSelected: (item) {
           if (item.route != null) {
-            Navigator.of(context).pushNamed(item.route!);
+
+            generatePageRoute(item.route);
+
+
+            debugPrint("Route Name ${item.route}");
           }
         },
-        header: Container(
-          height: 50,
-          width: double.infinity,
-          color: const Color(0xff444444),
-          child: const Center(
-            child: Text(
-              'header',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-        footer: Container(
-          height: 50,
-          width: double.infinity,
-          color: const Color(0xff444444),
-          child: const Center(
-            child: Text(
-              'footer',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
+
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          alignment: Alignment.topLeft,
-          padding: const EdgeInsets.all(10),
-          child: const Text(
-            'Dashboard',
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 36,
-            ),
-          ),
-        ),
+      body:
+      SingleChildScrollView(
+        child: selectedRoutedScreen,
+
       ),
     );
+
+  }
+    generatePageRoute( route){
+    switch(route){
+      case RoutesName.home:
+        setState(() {
+          selectedRoutedScreen  = HomeScreen();
+        });
+        break;
+      case RoutesName.login:
+        setState(() {
+          selectedRoutedScreen  = LoginView();
+        });
+        break;
+
+      case RoutesName.dashboard:
+        setState(() {
+          selectedRoutedScreen  = DashboardScreen();
+        });
+        break;
+
+
+
+
+      default :
+        return const Scaffold(
+          body:  Center(
+            child: Text('No route defined'),
+          ),
+        );
+
+    }
+
+
   }
 }

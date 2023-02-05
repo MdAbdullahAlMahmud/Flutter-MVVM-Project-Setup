@@ -22,7 +22,6 @@ class Routes{
         case RoutesName.dashboard:
         return MaterialPageRoute(builder: (BuildContext context) => DashboardScreen());
 
-
       default :
         return MaterialPageRoute(builder: (_){
 
@@ -32,8 +31,11 @@ class Routes{
             ),
           );
         });
-
     }
-
   }
+
+
+
+
+
 }
