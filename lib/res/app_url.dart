@@ -6,4 +6,7 @@ class AppUrl {
 
   static var loginUrl = baseUrl + "api/login";
 
+
+  static var userApiUrl = "https://jsonplaceholder.typicode.com/users";
+
 }

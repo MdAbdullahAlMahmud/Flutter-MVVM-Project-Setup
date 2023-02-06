@@ -10,6 +10,7 @@ class NavViewModel with ChangeNotifier {
 
   setNavScreenWidget(Widget widget) {
     _selectedWidgetScreen = widget;
+    notifyListeners();
   }
 
   Widget getNavScreenWidget( ) {
