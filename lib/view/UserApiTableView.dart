@@ -78,8 +78,7 @@ class _InternalWidget extends StatelessWidget {
 
   List<DataColumn> _colGen(
       UserApiDataTableSource _src,
-      UserDataProvider _provider,
-      ) =>
+      UserDataProvider _provider,) =>
       <DataColumn>[
         DataColumn(
           label: Text(DataTableConstants.colID),
@@ -103,15 +102,15 @@ class _InternalWidget extends StatelessWidget {
             _sort<String>((user) => user.email!, colIndex, asc, _src, _provider);
           },
         ),
-        DataColumn(
+        const DataColumn(
           label: Text(DataTableConstants.colPhone),
           tooltip: DataTableConstants.colPhone,
         ),
-        DataColumn(
+        const DataColumn(
           label: Text(DataTableConstants.colWebsite),
           tooltip: DataTableConstants.colWebsite,
         ),
-        DataColumn(
+       const  DataColumn(
           label: Text(DataTableConstants.otherDetails),
           tooltip: DataTableConstants.otherDetails,
         ),
