@@ -17,6 +17,7 @@ class AuthViewModel with ChangeNotifier {
     setLoading(true);
 
     debugPrint("Request Param ${data.toString()}");
+
     _authRepo.loginCredential(data).then((value) {
       setLoading(false);
       if (kDebugMode) {

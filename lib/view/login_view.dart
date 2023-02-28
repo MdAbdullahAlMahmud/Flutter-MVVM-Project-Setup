@@ -114,7 +114,6 @@ class _LoginViewState extends State<LoginView> {
           ),
           SizedBox(height: height * .02,),
 
-
         ],
       ),
 

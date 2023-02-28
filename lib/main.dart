@@ -6,6 +6,7 @@ import 'package:flutter_mvvm_project_practise/view/dashboard_view.dart';
 import 'package:flutter_mvvm_project_practise/view/nav_view.dart';
 import 'package:flutter_mvvm_project_practise/view_model/NavViewModel.dart';
 import 'package:flutter_mvvm_project_practise/view_model/auth_view_model.dart';
+import 'package:flutter_mvvm_project_practise/view_model/user_data_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => AuthViewModel()),
-      ChangeNotifierProvider(create: (_) => NavViewModel())
+      ChangeNotifierProvider(create: (_) => NavViewModel()),
+      ChangeNotifierProvider(create: (_) => UserDataProvider())
     ],
       child:  MaterialApp(
         debugShowCheckedModeBanner: false,
