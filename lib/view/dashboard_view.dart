@@ -22,6 +22,60 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Column(
               children:  [
 
+                DataTable(
+                    columns:[
+                      DataColumn(
+                        label: Container(
+                          width: 10,
+                          child: const Text('#',
+                              style:TextStyle(
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.right),
+                        ),
+                      ),
+
+                      DataColumn(
+                        label: Container(
+                          child: const Text('Name',
+                              style:TextStyle(
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.right),
+                        ),
+                      ),
+
+
+                      DataColumn(
+                        label: Container(
+                          child: const Text('Phone',
+                              style:TextStyle(
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.right),
+                        ),
+                      ),
+
+                        DataColumn(
+                        label: Container(
+                          child: const Text('Action',
+                              style:TextStyle(
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.right),
+                        ),
+                      ),
+
+
+
+
+                    ] ,
+                    rows: []
+
+                ),
+
+
+
                 NumberPaginator(
                   // by default, the paginator shows numbers as center content
                   numberPages: 100,
