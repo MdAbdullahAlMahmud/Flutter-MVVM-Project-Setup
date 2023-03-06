@@ -25,7 +25,7 @@ class UserRepository{
 
       var response =  await rootBundle.loadString('user_list.json');
 
-      return response;
+      return jsonDecode(response);
     }catch(e){
       throw e;
     }

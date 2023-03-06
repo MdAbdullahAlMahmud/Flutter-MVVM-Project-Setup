@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mvvm_project_practise/repository/user_repository.dart';
 
@@ -32,10 +34,13 @@ class ClientViewModel extends ChangeNotifier{
 
       try{
         _clientModel =   ClientModel.fromJson(value);
-        notifyListeners();
+        debugPrint("Data convertion completed ");
         setLoading(false);
+        debugPrint("Loading false ");
+        //notifyListeners();
 
       }catch(e){
+        debugPrint("Ex. ------------------->   ${e.toString()}");
         _clientModel = ClientModel();
         debugPrint("Exception $e");
       }

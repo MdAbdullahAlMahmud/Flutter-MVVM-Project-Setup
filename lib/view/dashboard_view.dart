@@ -18,21 +18,20 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
 
-   ClientViewModel? clientViewModel;
 
-  @override
-  void didChangeDependencies() {
 
-    Timer.run((){
-      clientViewModel = Provider.of<ClientViewModel>(context , listen: false);
-      clientViewModel!.getUserList();
-    });
+   @override
+  void initState() {
 
-    super.didChangeDependencies();
+     
   }
+
 
   @override
   Widget build(BuildContext context) {
+
+
+
    return SingleChildScrollView(
       child: Container(
         alignment: Alignment.topLeft,
@@ -99,7 +98,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                 ),
 
-                clientViewModel!.loading?const CircularProgressIndicator():Text(" Client Size ${clientViewModel!.getClientList!.data!.length}"),
 
                 NumberPaginator(
                   // by default, the paginator shows numbers as center content
