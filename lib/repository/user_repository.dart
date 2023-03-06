@@ -1,17 +1,35 @@
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
+
 import '../data/network/BaseApiServices.dart';
 import '../data/network/NetworkApiService.dart';
 import '../res/app_url.dart';
 
 class UserRepository{
-  BaseApiServices apiServices  = NetworkApiService();
+  BaseApiServices _apiServices  = NetworkApiService();
 
   Future<dynamic> getAllUserApiCall () async {
     try{
-      var response = await apiServices.getGetApiResponse(AppUrl.userApiUrl);
+      var response = await _apiServices.getGetApiResponse(AppUrl.userApiUrl);
       return response;
     }catch(e){
       throw e;
     }
+  }
+
+
+  Future<dynamic> getAllUser()async {
+    try{
+
+      var response =  await rootBundle.loadString('user_list.json');
+
+      return response;
+    }catch(e){
+      throw e;
+    }
+
   }
 
 }

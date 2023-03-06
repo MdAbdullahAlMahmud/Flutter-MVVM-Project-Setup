@@ -1,9 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:number_paginator/number_paginator.dart';
+import 'package:provider/provider.dart';
+
+import '../view_model/client_view_model.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
+
+
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -11,17 +18,35 @@ class DashboardScreen extends StatefulWidget {
 
 class _DashboardScreenState extends State<DashboardScreen> {
 
+   ClientViewModel? clientViewModel;
+
+  @override
+  void didChangeDependencies() {
+
+    Timer.run((){
+      clientViewModel = Provider.of<ClientViewModel>(context , listen: false);
+      clientViewModel!.getUserList();
+    });
+
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
    return SingleChildScrollView(
       child: Container(
         alignment: Alignment.topLeft,
         padding: const EdgeInsets.all(10),
-        child:
-
-            Column(
+        child: Column(
               children:  [
 
+                const Text(
+                  'Dashboard',
+                  style:  TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 36,
+                  ),
+                ),
                 DataTable(
                     columns:[
                       DataColumn(
@@ -74,7 +99,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                 ),
 
-
+                clientViewModel!.loading?const CircularProgressIndicator():Text(" Client Size ${clientViewModel!.getClientList!.data!.length}"),
 
                 NumberPaginator(
                   // by default, the paginator shows numbers as center content
@@ -98,13 +123,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     buttonSelectedBackgroundColor: Colors.blueGrey,
                   ),*/
                 ),
-                 Text(
-                  'Dashboard',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 36,
-                  ),
-                ),
+
               ],
             )
 
