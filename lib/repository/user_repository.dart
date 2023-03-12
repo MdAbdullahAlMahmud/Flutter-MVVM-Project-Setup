@@ -20,8 +20,11 @@ class UserRepository{
   }
 
 
-  Future<dynamic> getAllUser()async {
+  Future<dynamic> getAllUser(int pageLimit , int pageIndex )async {
     try{
+
+      debugPrint("Page Limit $pageLimit , Page Number $pageIndex");
+      await Future.delayed(const Duration(seconds: 1));
 
       var response =  await rootBundle.loadString('user_list.json');
 

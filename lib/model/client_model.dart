@@ -1,15 +1,15 @@
 class ClientModel {
   Meta? meta;
-  List<Data>? data;
+  List<ClientPojo>? data;
 
   ClientModel({this.meta, this.data});
 
   ClientModel.fromJson(Map<String, dynamic> json) {
-    meta = json['meta'] != null ? new Meta.fromJson(json['meta']) : null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <ClientPojo>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add( ClientPojo.fromJson(v));
       });
     }
   }
@@ -51,15 +51,15 @@ class Meta {
   }
 }
 
-class Data {
+class ClientPojo {
   int? id;
   String? name;
   String? phone;
   String? email;
 
-  Data({this.id, this.name, this.phone, this.email});
+  ClientPojo({this.id, this.name, this.phone, this.email});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  ClientPojo.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     phone = json['phone'];
